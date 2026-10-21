@@ -2,11 +2,11 @@
    画像は未配置のため、仮データ（プレースホルダーSVG）を参照しています。
    実画像が配置されたら image のパスを差し替えてください。 */
 const OMIKUJI_RESULTS = [
-  { id: 'omikuji-01', image: 'assets/images/omikuji-01.svg', rank: '大吉', message: 'すべてが良い方向へ進みます。自信を持って進みましょう。' },
-  { id: 'omikuji-02', image: 'assets/images/omikuji-02.svg', rank: '中吉', message: '穏やかな一日です。小さな感謝が運を呼び込みます。' },
-  { id: 'omikuji-03', image: 'assets/images/omikuji-03.svg', rank: '小吉', message: '無理をしなければ順調です。無理のない計画を。' },
-  { id: 'omikuji-04', image: 'assets/images/omikuji-04.svg', rank: '吉',   message: 'まずまずの運気です。平常心を心がけましょう。' },
-  { id: 'omikuji-05', image: 'assets/images/omikuji-05.svg', rank: '凶',   message: '慎重な一日です。焦らず、安全を最優先に。' }
+  { id: 'omikuji-01', image: 'assets/images/dai-kiti.gif', rank: '大吉', message: 'ワチャァー‼　アチャァー‼　オチャー‼' },
+  { id: 'omikuji-02', image: 'assets/images/tyuu-kiti.gif', rank: '中吉', message: '穏やかな一日です。小さな感謝が運を呼び込みます。' },
+  { id: 'omikuji-03', image: 'assets/images/tyuu-utiti.png', rank: '小吉', message: '無理をしなければ順調です。無理のない計画を。' },
+  { id: 'omikuji-04', image: 'assets/images/tyuu-kiti.png', rank: '吉',   message: 'まずまずの運気です。平常心を心がけましょう。' },
+  { id: 'omikuji-05', image: 'assets/images/kyou.gif', rank: '凶',   message: '慎重な一日です。焦らず、安全を最優先に。' }
 ];
 
 const DRAW_DURATION_MS = 1200;

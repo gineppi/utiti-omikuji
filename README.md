@@ -18,3 +18,5 @@
 
 4. テスト結果から修正・再テスト
 成功したら差分を人間が確認。失敗が続いたら自動処理を停止する
+
+元のやつはhttps://github.com/kosei-player/test1_website

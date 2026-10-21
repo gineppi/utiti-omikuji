@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#7b1f2b">
   <title>うちちみくじ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Potta+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,7 +16,7 @@
     <!-- タイトル画面 -->
     <section class="title-screen" id="title-screen" aria-labelledby="site-title">
       <h1 class="site-title" id="site-title">うちちみくじ</h1>
-      <p class="site-sub">今日のご神運を引こう</p>
+      <p class="site-sub">今日のうちち運を引こう</p>
 
       <!-- 画像なしプレースホルダー（CSSのみで描画） -->
       <div class="placeholder" role="img" aria-label="おみくじのプレースホルダー">
@@ -40,7 +43,7 @@
 
                             <!-- 画像（後から差し替え可能な構成／読み込み失敗時はフォールバック表示） -->
                             <div class="result-image" id="result-image">
-                              <img id="result-img" alt="" hidden>
+                              <img id="result-img" class="result-image" alt="" hidden>
                               <p class="result-image-fallback" id="result-image-fallback" hidden>画像は未設定です</p>
                             </div>
 
