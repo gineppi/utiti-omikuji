@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7b1f2b">
+  <title>うちちみくじ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="site">
+
+    <!-- タイトル画面 -->
+    <section class="title-screen" id="title-screen" aria-labelledby="site-title">
+      <h1 class="site-title" id="site-title">うちちみくじ</h1>
+      <p class="site-sub">今日のご神運を引こう</p>
+
+      <!-- 画像なしプレースホルダー（CSSのみで描画） -->
+      <div class="placeholder" role="img" aria-label="おみくじのプレースホルダー">
+        <span class="placeholder-mark" aria-hidden="true">み</span>
+      </div>
+
+      <button type="button" id="draw-button" class="btn btn-primary">
+        おみくじを引く
+      </button>
+    </section>
+
+    <!-- 抽選・結果画面 -->
+    <section class="stage" id="stage" hidden>
+
+      <!-- 抽選中のアニメーション -->
+      <div class="drawing" id="drawing" hidden>
+        <div class="drawing-paper" aria-hidden="true"></div>
+        <p class="drawing-text">抽選中…</p>
+      </div>
+
+      <!-- 結果 -->
+      <div class="result" id="result" role="status" aria-live="polite" hidden>
+              <p class="result-label">結果</p>
+
+                            <!-- 画像（後から差し替え可能な構成／読み込み失敗時はフォールバック表示） -->
+                            <div class="result-image" id="result-image">
+                              <img id="result-img" alt="" hidden>
+                              <p class="result-image-fallback" id="result-image-fallback" hidden>画像は未設定です</p>
+                            </div>
+
+                            <p class="result-rank" id="result-rank"></p>
+              <p class="result-message" id="result-message"></p>
+
+              <button type="button" id="copy-button" class="btn btn-secondary copy-button">
+                結果をコピー
+              </button>
+              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            </div>
+
+      <button type="button" id="again-button" class="btn btn-secondary" hidden>
+        もう一度引く
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>うちちみくじ</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+/* ===== 基本（モバイルファースト） ===== */
+:root {
+  --color-bg: #f7f3ea;
+  --color-ink: #2b2118;
+  --color-accent: #7b1f2b;
+  --color-gold: #c9a227;
+  --radius: 14px;
+  --tap-size: 44px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+[hidden] { display: none !important; }
+
+.site {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.site-footer {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 12px 16px 24px;
+  font-size: 12px;
+  color: #8a7f72;
+  text-align: center;
+}
+
+/* ===== タイトル画面 ===== */
+.title-screen {
+  text-align: center;
+  animation: fade-in 600ms ease both;
+}
+
+.site-title {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 8vw, 40px);
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.site-sub {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #6b5f54;
+}
+
+/* 画像なしプレースホルダー */
+.placeholder {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, #f2e6d2 60%, #e2d3b8 100%);
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-mark {
+  font-size: 32px;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* ===== ボタン ===== */
+.btn {
+  min-width: var(--tap-size);
+  min-height: var(--tap-size);
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(123, 31, 43, 0.35);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn:active { transform: translateY(1px) scale(0.98); }
+.btn:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ===== 抽選アニメーション ===== */
+.drawing {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.drawing-paper {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fffdf7, #efe3cf);
+  border: 2px dashed var(--color-gold);
+  animation: shake 700ms ease-in-out infinite;
+}
+
+.drawing-text {
+  margin: 0;
+  font-size: 14px;
+  color: #6b5f54;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+/* ===== 結果 ===== */
+.result {
+  padding: 20px;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid #e6dcc9;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  animation: pop-in 400ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+.result-label {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #8a7f72;
+}
+
+.result-rank {
+  margin: 0 0 12px;
+  font-size: clamp(24px, 7vw, 32px);
+  color: var(--color-accent);
+}
+
+.result-message {
+  margin: 0;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.copy-button {
+  margin-top: 16px;
+}
+
+.copy-status {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #6b5f54;
+}
+
+/* ===== キーフレーム ===== */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-6deg) translateY(2px); }
+  75%      { transform: rotate(6deg) translateY(-2px); }
+}
+
+@keyframes blink {
+  0%, 50%  { opacity: 1; }
+  51%, 100% { opacity: 0.4; }
+}
+
+/* ===== 減動設定・狭い画面 ===== */
+@media (prefers-reduced-motion: reduce) {
+  .placeholder, .drawing-paper, .drawing-text, .result, .title-screen {
+    animation: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .site { padding: 16px 12px 32px; }
+  .placeholder { width: 100px; height: 100px; }
+  .placeholder-mark { font-size: 26px; }
+}
