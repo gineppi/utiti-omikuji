@@ -2,14 +2,15 @@
    画像は未配置のため、仮データ（プレースホルダーSVG）を参照しています。
    実画像が配置されたら image のパスを差し替えてください。 */
 const OMIKUJI_RESULTS = [
-  { id: 'omikuji-01', image: 'assets/images/dai-kiti.gif', rank: '大吉', message: 'ワチャァー‼　アチャァー‼　オチャー‼' },
-  { id: 'omikuji-02', image: 'assets/images/tyuu-kiti.gif', rank: '中吉', message: '穏やかな一日です。小さな感謝が運を呼び込みます。' },
-  { id: 'omikuji-03', image: 'assets/images/tyuu-utiti.png', rank: '小吉', message: '無理をしなければ順調です。無理のない計画を。' },
-  { id: 'omikuji-04', image: 'assets/images/tyuu-kiti.png', rank: '吉',   message: 'まずまずの運気です。平常心を心がけましょう。' },
-  { id: 'omikuji-05', image: 'assets/images/kyou.gif', rank: '凶',   message: '慎重な一日です。焦らず、安全を最優先に。' }
+  { ritu:1,id: 'omikuji-00', sound:'assets/sounds/baku.mp3', image: 'assets/images/tyo-daikiti.gif', rank: 'スーパー超大吉', message: 'ワチャァー‼　アチャァー‼　オチャー‼' },
+  { ritu:10,id: 'omikuji-01', sound:'assets/sounds/kin.mp3', image: 'assets/images/dai-kiti.gif', rank: '大吉', message: '万事順調、花開く兆しあり。今こそ願いに向かって進むべし。' },
+  { ritu:30,id: 'omikuji-02', sound:'assets/sounds/news.mp3', image: 'assets/images/tyuu-kiti.gif', rank: '中吉', message: 'なんかいいことがあるかも！！今日が一番若い日、全力投球していこう！' },
+  { ritu:50,id: 'omikuji-03', sound:'assets/sounds/spot.mp3', image: 'assets/images/tyuu-utiti.png', rank: '小吉', message: '「小吉は吉より良いのか否か」って話、そろそろ飽きたよね！その話を振られたら大きな声で威嚇しちゃえ！ラッキーカラーはこげ茶。' },
+  { ritu:60,id: 'omikuji-04', sound:'assets/sounds/horor.mp3', image: 'assets/images/tyuu-kiti.png', rank: '吉',   message: '特別なこの機会いい見せ場を作るべし'},
+  { ritu:65,id: 'omikuji-05', sound:'assets/sounds/shock.mp3', image: 'assets/images/kyou.gif', rank: '凶',   message: '凶！大凶があるかないかで心の持ちようが変わってくるよね！そしてこのおみくじに大凶はない！つまり待ち人はもちろん来ないよ！今日のアンラッキーアイテムは靴！視界に入っただけで即死するかも…！気を付けてね！' }
 ];
 
-const DRAW_DURATION_MS = 1200;
+const DRAW_DURATION_MS = 2000;
 
 /* ===== DOM ===== */
 const titleScreen = document.getElementById('title-screen');
@@ -25,9 +26,19 @@ const againButton = document.getElementById('again-button');
 const copyButton = document.getElementById('copy-button');
 const copyStatus = document.getElementById('copy-status');
 
+const sound = new Audio();
+
 /* ===== ロジック ===== */
 function drawOmikuji() {
-  const index = Math.floor(Math.random() * OMIKUJI_RESULTS.length);
+  let t=OMIKUJI_RESULTS[OMIKUJI_RESULTS.length-1].ritu;
+  let n = Math.random() * t;
+  
+  let index = -1;
+  for(var i=0;i<OMIKUJI_RESULTS.length;i++)
+  {
+    if(n <= OMIKUJI_RESULTS[i].ritu) break;
+  }
+  index = i;
   return OMIKUJI_RESULTS[index];
 }
 
@@ -57,6 +68,8 @@ function showResult(entry) {
     return;
   }
 
+  sound.src = entry.sound;
+  sound.play();
   resultRank.textContent = entry.rank;
   resultMessage.textContent = entry.message;
   resultBox.dataset.rank = entry.rank;
